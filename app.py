@@ -1,47 +1,53 @@
 import streamlit as st
 
-# python -m streamlit run app.py
+# Coloca título
+st.title("Aluguel de Carros")
 
-# ------------------------------------------------- Sidebar
+# Escreve
+st.write("Aqui temos carros de luxo exclusivamente para você.")
 
+# Cria uma barra lateral
+st.sidebar.title("Barra Lateral")
 st.sidebar.image("logo.png")
-st.sidebar.title('Mateus Motors')
+
+# Criando a lista
+carros = ["Corvette V8", "Bentley", "Jaguar", "McLaren", "Bugatti"]
+
+# Cria caixinha na barra lateral
+opcao = st.sidebar.selectbox("ESCOLHA A MARCA" , carros)
 
 
-carros = ['BMW','Mustang', 'Porsche', 'Fusca', 'Toro']
-
-opcao = st.sidebar.selectbox('Escolha o carro que foi alugado', carros)
-
-
-
-# ----------------------------------------------- Principal 
-st.title('Mateus motors - Aluguel de Carros')
-
-st.image(f'{opcao}.png')
+# PRINCIPAL ──── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ────
+st.title('')
 st.markdown(f'## Você alugou o modelo: {opcao}')
+st.image(f'{opcao}.png')
 st.markdown('---')
+
+
+# OUTRA PARTE ──── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ────
 
 dias = st.text_input(f'Por quantos dias o {opcao} foi alugado?')
 km = st.text_input(f'Quantos km você rodou com o {opcao}?')
 
-if opcao == 'BMW':
-    diaria = 450
 
-elif opcao == 'Mustang':
-    diaria = 500
+# DEFINE DIÁRIA ──── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ────
 
-elif opcao == 'Porsche':
-    diaria = 300
+if opcao == 'Corvette V8':
+    diaria = 800
 
-elif opcao == 'Fusca':
-    diaria = 250
+elif opcao == 'Bentley':
+    diaria = 700
 
-elif opcao == 'Toro':
+elif opcao == 'Jaguar':
     diaria = 550
 
+elif opcao == 'McLaren':
+    diaria = 570
 
+elif opcao == 'Bugatti':
+    diaria = 660
 
-
+# CALCULAR ──── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── ୨୧ ──────── 
 
 if st.button('Calcular'):
     dias = int(dias)
@@ -49,12 +55,6 @@ if st.button('Calcular'):
 
     total_dias = dias * diaria
     total_km = km * 0.15
-    aluguel_total = total_dias+total_km
+    aluguel_total = total_dias + total_km
 
     st.warning(f'Você alugou o {opcao} por {dias} dias e rodou {km}km. O valor total a pagar é R${aluguel_total:.2f}')
-
-
-
-
-
-
